@@ -23,7 +23,6 @@ const EditCategorie = () => {
       .get(`http://127.0.0.1:8000/api/categories/${categorieId}`)
       .then((res) => {
         setNameCategories(res.data[0].nameCategories);
-        // console.log(res.data[0].nameCategories);
       })
       .catch((error) => {
         console.log(error);

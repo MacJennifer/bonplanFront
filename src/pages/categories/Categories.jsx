@@ -12,6 +12,7 @@ const Categories = () => {
   useEffect(() => {
     fetchCategories();
   }, []);
+
   const fetchCategories = async () => {
     try {
       const categoriesResponse = await axios.get(
@@ -22,29 +23,38 @@ const Categories = () => {
       console.error("Erreur lors de la récupération des données :", error);
     }
   };
+
   const handleDelete = async (categorieId) => {
-    await axios
-      .delete(`http://localhost:8000/api/categories/${categorieId}`)
-      .then(fetchCategories);
+    try {
+      await axios.delete(`http://localhost:8000/api/categories/${categorieId}`);
+      // Supprimer la catégorie
+      setCategories(
+        categories.filter((categorie) => categorie.id !== categorieId)
+      );
+    } catch (error) {
+      console.error("Erreur lors de la suppression de la catégorie :", error);
+    }
   };
 
   return (
     <div>
       <NavigationAdmin />
-      <h2 className="text-center mb-4 display-4">Categories</h2>
-      <ButtonAdd go="/admin/addCategorie" />
-      <div className="row">
-        {categories.map((categorie) => (
-          <div className="col-md-4" key={categorie.id}>
-            <Card className="mb-4">
-              <Card.Body>
-                <Card.Title>{categorie.nameCategories}</Card.Title>
-                <ButtonEdit go={`/admin/editCategorie/${categorie.id}`} />
-                <ButtonDelete onClick={() => handleDelete(categorie.id)} />
-              </Card.Body>
-            </Card>
-          </div>
-        ))}
+      <div className="container">
+        <h2 className="text-center mb-4 display-4">Catégories</h2>
+        <ButtonAdd go="/admin/addCategorie" />
+        <div className="row mt-2 justify-content-center">
+          {categories.map((categorie) => (
+            <div className="col-md-4 mb-4" key={categorie.id}>
+              <Card style={{ width: "18rem" }}>
+                <Card.Body>
+                  <Card.Title>{categorie.nameCategories}</Card.Title>
+                  <ButtonEdit go={`/admin/editCategorie/${categorie.id}`} />
+                  <ButtonDelete onClick={() => handleDelete(categorie.id)} />
+                </Card.Body>
+              </Card>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

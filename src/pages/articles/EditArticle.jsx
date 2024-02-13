@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useNavigate, useParams } from "react-router-dom";
+import NavigationAdmin from "../../components/NavigationAdmin";
 
 const EditArticle = () => {
   const { articleId } = useParams();
@@ -51,6 +52,7 @@ const EditArticle = () => {
 
   return (
     <div>
+      <NavigationAdmin />
       <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-12 col-sm-12 col-md-6">

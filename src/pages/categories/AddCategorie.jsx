@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useNavigate } from "react-router-dom";
-
+import NavigationAdmin from "../../components/NavigationAdmin";
 const AddCategorie = () => {
   const navigate = useNavigate();
 
@@ -32,8 +32,11 @@ const AddCategorie = () => {
   };
   return (
     <div>
+      <NavigationAdmin />
       <div className="container">
-        <div className="row justify-content-center">
+        <div className="row justify-content-center mt-4">
+          {" "}
+          {/* Ajout de la classe mt-4 pour décaler vers le bas */}
           <div className="col-12 col-sm-12 col-md-6">
             <div className="card">
               <div className="card-body">

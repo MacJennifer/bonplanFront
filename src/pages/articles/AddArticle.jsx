@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useNavigate } from "react-router-dom";
+import NavigationAdmin from "../../components/NavigationAdmin";
 
 const AddArticle = () => {
   const navigate = useNavigate();
@@ -13,8 +14,7 @@ const AddArticle = () => {
   const [description, setDescription] = useState("");
   const [validationError, setValidationError] = useState({});
 
-  //Fonction d'ajout de club
-  const addClub = async (e) => {
+  const addArticles = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
@@ -32,7 +32,8 @@ const AddArticle = () => {
   };
   return (
     <div>
-      <div className="container">
+      <NavigationAdmin />
+      <div className="container mt-2">
         <div className="row justify-content-center">
           <div className="col-12 col-sm-12 col-md-6">
             <div className="card">
@@ -55,7 +56,7 @@ const AddArticle = () => {
                       </div>
                     </div>
                   )}
-                  <Form onSubmit={addClub}>
+                  <Form onSubmit={addArticles}>
                     <Row>
                       <Col>
                         <Form.Group controlId="titleArticles">

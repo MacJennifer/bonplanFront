@@ -4,9 +4,18 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import auth from "../services/token";
 
 function Navigation() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    auth.logout();
+    navigate("/login");
+  };
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -29,11 +38,32 @@ function Navigation() {
             </Nav>
             <Nav className="me-auto">
               <Link
-                to="/"
+                to="/account"
                 className="nav-link"
                 style={{ textDecoration: "none" }}
               >
                 Mon compte
+              </Link>
+            </Nav>
+            {auth.loggedAdmin() && (
+              <Nav className="me-auto">
+                <Link
+                  to="/admin"
+                  className="nav-link"
+                  style={{ textDecoration: "none" }}
+                >
+                  Admin
+                </Link>
+              </Nav>
+            )}
+            <Nav className="me-auto">
+              <Link
+                to="/"
+                onClick={handleLogout}
+                className="nav-link"
+                style={{ textDecoration: "none" }}
+              >
+                Se déconnecter
               </Link>
             </Nav>
           </Nav>

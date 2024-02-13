@@ -9,7 +9,7 @@ function NavigationAdmin() {
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
           <Nav className="me-auto">
-            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
               Accueil
             </Link>
           </Nav>
