@@ -54,7 +54,11 @@ const Places = () => {
           return (
             <div className="col-md-4" key={place.id}>
               <Card className="mb-4">
-                <Card.Img variant="top" src={place.image} />
+                <img
+                  src={`http://localhost:8000/storage/uploads/${place.image}`}
+                  alt="Preview"
+                  style={{ width: "30%" }}
+                />
                 <Card.Body>
                   <Card.Title>{place.namePlace}</Card.Title>
                   <Card.Text>

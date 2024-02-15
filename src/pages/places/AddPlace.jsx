@@ -22,7 +22,8 @@ const AddPlace = () => {
 
   const changeHandler = (event) => {
     console.log(event);
-    setImage(event.target.value);
+    setImage(event.target.files[0]);
+    console.log("Updated image:", event.target.files[0]);
   };
 
   const handleChange = (event) => {

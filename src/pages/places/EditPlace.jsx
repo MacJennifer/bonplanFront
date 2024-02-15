@@ -114,8 +114,8 @@ const EditPlace = () => {
                   )}
                   <Row>
                     <Col>
-                      <Form.Group controlId="photoPlayer">
-                        <Form.Label>Photo</Form.Label>
+                      <Form.Group controlId="image">
+                        <Form.Label>Image</Form.Label>
                         <Form.Control type="file" onChange={changeHandler} />
                       </Form.Group>
                     </Col>
